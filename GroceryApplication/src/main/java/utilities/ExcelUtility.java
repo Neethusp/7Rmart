@@ -13,7 +13,7 @@ public class ExcelUtility{
 	static XSSFWorkbook w;
 	static XSSFSheet sh;
 	
-	public static String readUsernameData(int row, int col, String sheet) throws IOException
+	public static String readStringData(int row, int col, String sheet) throws IOException
 	{
 		
 		f= new FileInputStream (System.getProperty("user.dir")+"\\src\\test\\resources\\TestData\\TestData.xlsx");
@@ -23,7 +23,7 @@ public class ExcelUtility{
 		XSSFCell c= r.getCell(col);
 		return c.getStringCellValue();
 	}
-	public static String readPasswordData(int row, int col, String sheet) throws IOException
+	public static String readIntegerData(int row, int col, String sheet) throws IOException
 
 {
 	
@@ -32,6 +32,7 @@ public class ExcelUtility{
 	sh= w.getSheet(sheet);
 	XSSFRow r= sh.getRow(row);
 	XSSFCell c= r.getCell(col);
+	int val = (int) c.getNumericCellValue();
 	return c.getStringCellValue();
 	
 }
