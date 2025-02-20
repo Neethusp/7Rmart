@@ -1,0 +1,25 @@
+<suite name="myTestSuite" parallel="tests" thread-count="2">
+	<parameter name="browser" value="chrome">
+	</parameter>
+	<test thread-count = "5" name="myTest">
+		<classes>
+			<class name="testscript.LoginTest">
+				<methods>
+					<include
+						name="verifyUserLoginWithInvalidUsernameAndValidPassword"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test thread-count = "5" name="myTest2">
+	<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<!-- <class name="testscript.SubCategoryTest">
+				<methods>
+					<include
+						name="verifySearchListSubCategories"></include>
+				</methods>
+			</class>-->
+		</classes>
+	</test>
+</suite>

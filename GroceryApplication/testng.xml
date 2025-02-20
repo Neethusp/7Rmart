@@ -1,0 +1,23 @@
+<suite name="myTestSuite">
+	<parameter name="browser" value="chrome">
+	</parameter>
+	<listeners>
+		<listener class-name="listeners.Listeners"></listener>
+		<!-- <listener class-name ="listeners.RetryListener"></listener>-->
+	</listeners>
+	<test name="myTest">
+		<classes>
+			<class name="testscript.LoginTest">
+				<methods>
+					<include
+						name="verifyUserLoginWithValidUsernameAndValidPassword"></include>
+				</methods>
+			</class>
+			<class name="testscript.CategoryTest"></class>
+			<class name="testscript.ManageContactTest"></class>
+			<class name="testscript.ManageFooterTextTest"></class>
+			<class name="testscript.ManageNewsTest"></class>
+			<class name="testscript.SubCategoryTest"></class>
+		</classes>
+	</test>
+</suite>
