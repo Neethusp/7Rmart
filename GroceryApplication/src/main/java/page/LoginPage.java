@@ -42,7 +42,7 @@ public class LoginPage {
 	public HomePage LoginUsingExcelData() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "Login Page");
 		usernamefield.sendKeys(username);
-		String password = ExcelUtility.readIntegerData(1, 1, "Login Page");
+		String password = ExcelUtility.readStringData(1, 1, "Login Page");
 		passwordfield.sendKeys(password);
 		signinbutton.click();
 		return new HomePage(driver);

@@ -3,7 +3,7 @@
 	</parameter>
 	<listeners>
 		<listener class-name="listeners.Listeners"></listener>
-		<!-- <listener class-name ="listeners.RetryListener"></listener>-->
+		<listener class-name ="listeners.RetryListener"></listener>
 	</listeners>
 	<test name="myTest">
 		<classes>

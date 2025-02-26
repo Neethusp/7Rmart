@@ -14,12 +14,12 @@
 	<test thread-count = "5" name="myTest2">
 	<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<!-- <class name="testscript.SubCategoryTest">
+			<class name="testscript.SubCategoryTest">
 				<methods>
 					<include
 						name="verifySearchListSubCategories"></include>
 				</methods>
-			</class>-->
+			</class>
 		</classes>
 	</test>
 </suite>

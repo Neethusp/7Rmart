@@ -13,45 +13,59 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtility {
+	public static int fluentWaitDuration=3;
+	public static int explicitWaitDuration = 5;
+	public static int implicitWaitDuration = 10;
 	public void fluentWaitElements(WebDriver driver, WebElement element, String attribute, String attributeValue,
 			int total) {
 		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(total))
-				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
+				.pollingEvery(Duration.ofSeconds(fluentWaitDuration)).ignoring(NoSuchElementException.class);
 		fluentWait.until(ExpectedConditions.attributeContains(element, attribute, attributeValue));
 	}
 
-	public void waitForWebElementAlert(WebDriver driver, WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	public void fluentWaitElementsAlert(WebDriver driver, WebElement element, String attribute, String attributeValue,
+			int total) {
+		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(total))
+				.pollingEvery(Duration.ofSeconds(fluentWaitDuration)).ignoring(NoSuchElementException.class);
+		fluentWait.until(ExpectedConditions.alertIsPresent());
+	}
+
+	public void waitForWebElementAlert(WebDriver driver) // explicit wait
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitDuration));
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
-	public void waitUntilElementIsVissible(WebDriver driver,WebElement element) 
+
+	public void waitUntilElementisVisisble(WebDriver driver, WebElement element)// explicit wait
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitDuration));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	public void implicitWait(WebDriver driver)
-	{
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	}
-	public void waitUntilElementIsClickable(WebDriver driver,WebElement element)   //wait for element to be clickable
 	
+	public void waitUntilAllElementInVisisble(WebDriver driver, WebElement element)// explicit wait
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitDuration));
+		wait.until(ExpectedConditions.invisibilityOfAllElements(element));
+	}
+
+	public void waitUntilElementisClickable(WebDriver driver, WebElement element)// explicit wait
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitDuration));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-	public void waitUntilElementText(WebDriver driver,WebElement element,String text)   //wait for elements Text
+	
+	public void waitUntilAttributeContains(WebDriver driver, WebElement element)// explicit wait
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitDuration));
+		wait.until(ExpectedConditions.elementSelectionStateToBe(element, false));
 	}
-	public void waitUntilElementIsInvisible(WebDriver driver,By locator)   //wait for element to disappear
+	
+	public void implicitWait(WebDriver driver) //implicit wait
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitDuration));
 	}
-	public void waitUntilElementIsSelected(WebDriver driver,WebElement element)  //wait for element to be selected
+	public static void disableImplicitWait(WebDriver driver) //disables implicit wait
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeSelected(element));
-	}
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+    }
 }

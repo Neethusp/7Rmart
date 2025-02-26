@@ -74,10 +74,7 @@ public class SubcategoryPage {
 	}
 
 	public SubcategoryPage clickOnCategoryDropDown() {
-		Select selectcategory = new Select(categorydropdown);
-		selectcategory.selectByVisibleText("Toys");
-		WebElement selectedelement = selectcategory.getFirstSelectedOption();
-		selectedelement.click();
+		pageutility.selectDropdownWithVisibleText(categorydropdown, "Toys");
 		return this;
 
 	}
@@ -107,10 +104,7 @@ public class SubcategoryPage {
 	}
 
 	public SubcategoryPage clickOnCategoryDropDownToSearch() {
-		Select selectcategory = new Select(categorydropdownsearch);
-		selectcategory.selectByVisibleText("Toys");
-		WebElement selectedelement = selectcategory.getFirstSelectedOption();
-		selectedelement.click();
+		pageutility.selectDropdownWithVisibleText(categorydropdownsearch, "Toys");
 		return this;
 
 	}

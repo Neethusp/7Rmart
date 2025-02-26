@@ -20,7 +20,7 @@ public class FileUploadUtility {
 
 		element.sendKeys(filepath);
 	}
-	public void filemethodusingrobotkey(WebElement element,String filepath) throws AWTException
+	public void filemethodusingrobotclass(WebElement element,String filepath) throws AWTException
 	{
 		element.click();
 		StringSelection ss=new StringSelection(filepath);

@@ -1,3 +1,4 @@
+
 <suite name="crossBrowserTesting" parallel="tests" thread-count="2">
     <test thread-count="5" name="chromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
