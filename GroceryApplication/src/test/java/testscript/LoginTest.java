@@ -25,7 +25,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test
+	@Test(groups = "smoke")
 	public void verifyUserLoginWithValidUsernameAndInvalidPassword() {
 		LoginPage login = new LoginPage(driver);
 		String username = "admin";
